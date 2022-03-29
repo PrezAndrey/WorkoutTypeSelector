@@ -17,6 +17,8 @@
 		5551B56D27EBD044003132A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5551B56B27EBD044003132A9 /* LaunchScreen.storyboard */; };
 		5551B57627EBD710003132A9 /* WorkoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551B57527EBD710003132A9 /* WorkoutType.swift */; };
 		5551B57927EBD864003132A9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551B57827EBD864003132A9 /* DetailViewController.swift */; };
+		555D42CC27F300940069DE83 /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555D42CB27F300940069DE83 /* ButtonView.xib */; };
+		555D42CE27F302E00069DE83 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D42CD27F302E00069DE83 /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		5551B56E27EBD044003132A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5551B57527EBD710003132A9 /* WorkoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutType.swift; sourceTree = "<group>"; };
 		5551B57827EBD864003132A9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		555D42CB27F300940069DE83 /* ButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
+		555D42CD27F302E00069DE83 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		5551B55F27EBD042003132A9 /* WorkoutTypePicker */ = {
 			isa = PBXGroup;
 			children = (
+				555D42CA27F3006A0069DE83 /* View */,
 				5551B57727EBD71C003132A9 /* Models */,
 				5551B57427EBD6ED003132A9 /* Controllers */,
 				5551B56027EBD042003132A9 /* AppDelegate.swift */,
@@ -93,6 +98,15 @@
 				5541491827EE5A1B00E930A9 /* TypeService.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		555D42CA27F3006A0069DE83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				555D42CB27F300940069DE83 /* ButtonView.xib */,
+				555D42CD27F302E00069DE83 /* ButtonView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +169,7 @@
 			files = (
 				5551B56D27EBD044003132A9 /* LaunchScreen.storyboard in Resources */,
 				5551B56A27EBD044003132A9 /* Assets.xcassets in Resources */,
+				555D42CC27F300940069DE83 /* ButtonView.xib in Resources */,
 				5551B56827EBD042003132A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +183,7 @@
 			files = (
 				5541491B27EE621900E930A9 /* MainSreenVC.swift in Sources */,
 				5551B56527EBD042003132A9 /* TypeSelectorVC.swift in Sources */,
+				555D42CE27F302E00069DE83 /* ButtonView.swift in Sources */,
 				5541491927EE5A1B00E930A9 /* TypeService.swift in Sources */,
 				5551B57627EBD710003132A9 /* WorkoutType.swift in Sources */,
 				5551B57927EBD864003132A9 /* DetailViewController.swift in Sources */,

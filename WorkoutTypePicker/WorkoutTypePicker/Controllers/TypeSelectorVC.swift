@@ -49,7 +49,7 @@ class TypeSelectorVC: UITableViewController {
         definesPresentationContext = true
         delegate = mainScreenVC
         service = typeService
-        self.tableView.insertRows(at: [IndexPath.init(row: typeService.workoutTypes.count - 1, section: 0)], with: .automatic)
+        
         
         
         
@@ -63,6 +63,9 @@ class TypeSelectorVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
+            if noCouples(searchController.searchBar.text!) {
+                return filteredTypes.count + 1
+            }
             return filteredTypes.count
         }
         
@@ -78,11 +81,19 @@ class TypeSelectorVC: UITableViewController {
         var workout = typeService.workoutTypes[indexPath.row]
         
         if isFiltering {
+            if indexPath.row == filteredTypes.count {
+                if let cell = Bundle.main.loadNibNamed("ButtonView", owner: self, options: nil)?.first as? ButtonView {
+                    cell.didAddButton.setTitle("Добавить новый тип: \(searchController.searchBar.text!)", for: .normal)
+                    cell.didAddButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+                    
+                    return cell
+                }
+                
+                return UITableViewCell()
+            }
             workout = filteredTypes[indexPath.row]
             
             
-        } else {
-            workout = typeService.workoutTypes[indexPath.row]
         }
         
         
@@ -104,25 +115,34 @@ class TypeSelectorVC: UITableViewController {
     }
     
     
-    // MARK: Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let workout: WorkoutType
-//
-//
-//                if isFiltering {
-//                    workout = filteredWorkouts[indexPath.row]
-//                } else {
-//                    workout = typeService.workoutTypes[indexPath.row]
-//                }
-//
-//                let detailVC = segue.destination as! DetailViewController
-//                detailVC.workoutType = workout
-//            }
-//        }
-//    }
+    @objc func buttonPressed(sender: UIButton) {
+        print("Cell button is working!")
+        service?.createType(with: searchController.searchBar.text!, completion: { result in
+            switch result {
+            case .success(let newType):
+                self.filteredTypes.append(newType)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure:
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            
+            }
+        })
+    }
+    
+    private func noCouples(_ searchResult: String) -> Bool {
+        var flag = true
+        for i in typeService.workoutTypes {
+            if i.name == searchResult {
+                flag = false
+            }
+        }
+        return flag
+    }
 }
 
 extension TypeSelectorVC: UISearchResultsUpdating {

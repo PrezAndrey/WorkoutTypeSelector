@@ -13,14 +13,14 @@ protocol TypeSelectorService {
     
     func fetchTypes(for query: String, completion: @escaping (Result<[WorkoutType], Error>) -> Void )
     
-    func createType(with name: String, completion: @escaping (Result<String, Error>) -> Void )
+    func createType(with name: String, completion: @escaping (Result<WorkoutType, Error>) -> Void )
 }
 
 class TypeService {
     
     var filteredWorkouts = [WorkoutType]()
     
-    let workoutTypes = [
+    var workoutTypes = [
         WorkoutType(name: "Йога", type: .mixed),
         WorkoutType(name: "Пилатес", type: .aerobic),
         WorkoutType(name: "Танцевальные групповые тренировки", type: .aerobic),
@@ -48,8 +48,11 @@ extension TypeService: TypeSelectorService {
         
     }
 
-    func createType(with name: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
+    func createType(with name: String, completion: @escaping (Result<WorkoutType, Error>) -> Void) {
+        let newType = WorkoutType(name: name, type: .mixed)
+        workoutTypes.append(newType)
+        print(workoutTypes)
+        completion(.success(newType))
     }
     
     
