@@ -4,11 +4,16 @@
 ## Задача:
 ![Header](https://github.com/PrezAndrey/WorkoutTypeSelector/blob/main/IMAGE%202022-04-24%2022:08:09.jpg)
 
-## Результат:
-
-## Можно выполнять поиск как по типу тренировки, так и по типу нагрузки
-![video](https://github.com/PrezAndrey/WorkoutTypeSelector/blob/main/search.gif)
-Экран для Спортивного приложения
+## Что сделал:
 Экран представляет из себя tableView с различными видами тренировок и searchBar, есть возможность поиска и добавления новых видов тренировок
 кнопка добавления отображается при поиске, когда в searchBar находится текст которого нет в массиве WorkoutTypes, при нажатии на кнопку вызывает метод делегата createType, который добавляет новый элемент в список и этот же эелемент отправляет в completion, в контроллере полученный тип добавляется массив filteredArray
+
+## Результат:
+
+### Можно выполнять поиск как по типу тренировки, так и по типу нагрузки
+![video](https://github.com/PrezAndrey/WorkoutTypeSelector/blob/main/search.gif)
+
+### Есть возможность добавлять новые типы, если тренировки с подобным названием еще нет, если есть, то кнопка добавления исчезает
+![video](https://github.com/PrezAndrey/WorkoutTypeSelector/blob/main/add.gif)
+
 
